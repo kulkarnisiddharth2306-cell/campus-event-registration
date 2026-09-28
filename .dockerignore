@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.git
+.github
+.env
+.DS_Store
+Thumbs.db
+test
+eslint.config.js
+README.md

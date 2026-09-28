@@ -1,0 +1,33 @@
+{
+  "name": "anti-gravity-portal",
+  "version": "1.0.0",
+  "description": "ANTI-GRAVITY — Gravity Simulation & Experiment Portal for Cloud Computing and DevOps CCA",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node --test",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "gravity",
+    "simulation",
+    "devops",
+    "cca",
+    "express",
+    "docker",
+    "render"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.0",
+    "globals": "^15.14.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

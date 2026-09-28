@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANTI-GRAVITY — Gravity Simulation &amp; Experiment Portal</title>
+  <meta name="description" content="Explore gravitational acceleration across celestial bodies, simulate physics experiments, and analyze real-time telemetry.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-group">
+        <div class="brand-icon" aria-hidden="true">🪐</div>
+        <div>
+          <h1 class="brand-title">ANTI-GRAVITY</h1>
+          <p class="brand-subtitle">Gravity Simulation &amp; Experiment Portal</p>
+        </div>
+      </div>
+      <div class="header-status-group">
+        <div id="health-indicator" class="status-badge status-loading" role="status" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="health-text">Checking Health...</span>
+        </div>
+        <div class="cloud-badge" title="Cloud Computing &amp; DevOps CCA 2">
+          <span>CCA 2 Project</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-content">
+    
+    <!-- Hero Science Overview -->
+    <section class="section-card hero-section" aria-labelledby="science-overview-heading">
+      <div class="hero-text">
+        <h2 id="science-overview-heading" class="section-title">The Physics of Gravitational Acceleration</h2>
+        <p class="hero-description">
+          Gravity is the fundamental attractive force between masses. On any celestial body, the weight of an object is directly proportional to its mass and the local gravitational acceleration ($g$):
+        </p>
+        <div class="formula-box">
+          <span class="formula-label">Fundamental Formula:</span>
+          <code class="formula-code">Weight (N) = Mass (kg) &times; Gravitational Acceleration (m/s&sup2;)</code>
+          <p class="formula-subtext">Potential Energy: <code class="formula-code-inline">E&#8346; = m &times; g &times; h (Joules)</code></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Celestial Bodies Quick Reference Grid -->
+    <section class="section-card" aria-labelledby="planets-catalog-heading">
+      <h2 id="planets-catalog-heading" class="section-title">Celestial Acceleration Index</h2>
+      <p class="section-subtitle">Reference gravitational acceleration across supported celestial bodies:</p>
+      
+      <div class="planets-grid">
+        <article class="planet-card" data-planet="Earth">
+          <div class="planet-icon">🌍</div>
+          <h3 class="planet-name">Earth</h3>
+          <p class="planet-gravity"><strong>9.81</strong> m/s&sup2;</p>
+          <span class="planet-comparison">1.00&times; (Standard)</span>
+        </article>
+        
+        <article class="planet-card" data-planet="Moon">
+          <div class="planet-icon">🌕</div>
+          <h3 class="planet-name">Moon</h3>
+          <p class="planet-gravity"><strong>1.62</strong> m/s&sup2;</p>
+          <span class="planet-comparison">~0.165&times; of Earth</span>
+        </article>
+
+        <article class="planet-card" data-planet="Mars">
+          <div class="planet-icon">🔴</div>
+          <h3 class="planet-name">Mars</h3>
+          <p class="planet-gravity"><strong>3.71</strong> m/s&sup2;</p>
+          <span class="planet-comparison">~0.378&times; of Earth</span>
+        </article>
+
+        <article class="planet-card" data-planet="Jupiter">
+          <div class="planet-icon">🪐</div>
+          <h3 class="planet-name">Jupiter</h3>
+          <p class="planet-gravity"><strong>24.79</strong> m/s&sup2;</p>
+          <span class="planet-comparison">~2.527&times; of Earth</span>
+        </article>
+
+        <article class="planet-card" data-planet="Venus">
+          <div class="planet-icon">🟡</div>
+          <h3 class="planet-name">Venus</h3>
+          <p class="planet-gravity"><strong>8.87</strong> m/s&sup2;</p>
+          <span class="planet-comparison">~0.904&times; of Earth</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Interactive Simulation & Experiment Form -->
+    <div class="two-column-layout">
+      <!-- Form Column -->
+      <section class="section-card" aria-labelledby="experiment-form-heading">
+        <h2 id="experiment-form-heading" class="section-title">New Gravitational Experiment</h2>
+        <p class="section-subtitle">Define an object, choose a world, and record the experimental calculation.</p>
+
+        <form id="experiment-form" novalidate>
+          <div id="form-alert" class="alert-box alert-hidden" role="alert"></div>
+
+          <div class="form-group">
+            <label for="name-input">Object / Person Name <span class="required-indicator">*</span></label>
+            <input 
+              type="text" 
+              id="name-input" 
+              name="name" 
+              class="form-control" 
+              placeholder="e.g. Artemis Astronaut / Perseverance Rover" 
+              required
+              autocomplete="off"
+            >
+            <small class="field-hint">Specify an identifier for the subject or object being tested.</small>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-half">
+              <label for="mass-input">Mass (kg) <span class="required-indicator">*</span></label>
+              <input 
+                type="number" 
+                id="mass-input" 
+                name="mass" 
+                class="form-control" 
+                placeholder="e.g. 75" 
+                step="any" 
+                min="0.001" 
+                required
+              >
+              <small class="field-hint">Must be greater than 0 kg.</small>
+            </div>
+
+            <div class="form-group col-half">
+              <label for="height-input">Drop / Elevation Height (m) <span class="required-indicator">*</span></label>
+              <input 
+                type="number" 
+                id="height-input" 
+                name="height" 
+                class="form-control" 
+                placeholder="e.g. 1.8" 
+                step="any" 
+                min="0" 
+                value="0" 
+                required
+              >
+              <small class="field-hint">0 meters or higher.</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="planet-select">Celestial Body <span class="required-indicator">*</span></label>
+            <select id="planet-select" name="planet" class="form-control" required>
+              <option value="" disabled selected>-- Select a celestial body --</option>
+              <option value="Earth">Earth (g = 9.81 m/s²)</option>
+              <option value="Moon">Moon (g = 1.62 m/s²)</option>
+              <option value="Mars">Mars (g = 3.71 m/s²)</option>
+              <option value="Jupiter">Jupiter (g = 24.79 m/s²)</option>
+              <option value="Venus">Venus (g = 8.87 m/s²)</option>
+            </select>
+            <small class="field-hint">Select destination world for gravitational simulation.</small>
+          </div>
+
+          <!-- Real-Time Calculation Preview -->
+          <div class="preview-box" id="calc-preview" aria-live="polite">
+            <div class="preview-header">Live Simulation Preview</div>
+            <div class="preview-metric">
+              <span class="preview-label">Calculated Weight:</span>
+              <span id="preview-weight" class="preview-value">-- N</span>
+            </div>
+            <div class="preview-metric">
+              <span class="preview-label">Potential Energy:</span>
+              <span id="preview-pe" class="preview-subvalue">-- J</span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn-primary">
+              <span class="btn-icon">🚀</span> Record Experiment
+            </button>
+            <button type="button" id="reset-btn" class="btn btn-secondary">
+              Reset Form
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Latest Result Display Column -->
+      <section class="section-card result-panel" aria-labelledby="latest-result-heading">
+        <h2 id="latest-result-heading" class="section-title">Latest Experiment Telemetry</h2>
+        <p class="section-subtitle">Real-time breakdown of the most recently submitted calculation:</p>
+
+        <div id="latest-experiment-container" class="telemetry-card">
+          <div class="telemetry-empty" id="telemetry-empty">
+            <span class="empty-icon">🔬</span>
+            <p>Submit an experiment using the form to view full telemetry diagnostics.</p>
+          </div>
+
+          <div id="telemetry-content" class="telemetry-details hidden">
+            <div class="telemetry-header">
+              <span class="badge-planet" id="res-planet">Mars</span>
+              <span class="timestamp-badge" id="res-time">Just now</span>
+            </div>
+
+            <h3 class="subject-name" id="res-name">Sample Subject</h3>
+
+            <div class="telemetry-stat-primary">
+              <div class="stat-number" id="res-weight">0.00</div>
+              <div class="stat-unit">Newtons (N)</div>
+              <div class="stat-description">Surface Weight (<code id="res-formula">m &times; g</code>)</div>
+            </div>
+
+            <div class="telemetry-metrics-grid">
+              <div class="metric-card">
+                <span class="metric-title">Mass</span>
+                <span class="metric-val" id="res-mass">0 kg</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-title">Elevation Height</span>
+                <span class="metric-val" id="res-height">0 m</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-title">Gravity ($g$)</span>
+                <span class="metric-val" id="res-gravity">0 m/s&sup2;</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-title">Potential Energy</span>
+                <span class="metric-val" id="res-pe">0 J</span>
+              </div>
+            </div>
+
+            <div class="earth-comparison-bar">
+              <div class="comparison-label">
+                <span>Weight relative to Earth:</span>
+                <strong id="res-earth-ratio">--%</strong>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="res-progress-fill" style="width: 50%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Submitted Experiments Table -->
+    <section class="section-card" aria-labelledby="experiments-log-heading">
+      <div class="table-header-group">
+        <div>
+          <h2 id="experiments-log-heading" class="section-title">Submitted Experiments Archive</h2>
+          <p class="section-subtitle">Real-time in-memory experiment records retrieved from the server.</p>
+        </div>
+        <div class="table-actions">
+          <input 
+            type="search" 
+            id="table-search" 
+            class="search-input" 
+            placeholder="Search experiments by name or planet..." 
+            aria-label="Filter experiments"
+          >
+          <button id="refresh-experiments-btn" class="btn btn-outline" title="Refresh experiment list">
+            🔄 Refresh
+          </button>
+        </div>
+      </div>
+
+      <div class="table-summary-bar">
+        <div class="summary-item">Total Experiments: <strong id="stats-total">0</strong></div>
+        <div class="summary-item">Average Weight: <strong id="stats-avg">0 N</strong></div>
+        <div class="summary-item">Maximum Recorded Weight: <strong id="stats-max">0 N</strong></div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="experiments-table" aria-label="Table of submitted experiments">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Subject Name</th>
+              <th scope="col">Celestial Body</th>
+              <th scope="col">Gravity ($g$)</th>
+              <th scope="col">Mass (kg)</th>
+              <th scope="col">Height (m)</th>
+              <th scope="col">Calculated Weight (N)</th>
+              <th scope="col">Potential Energy (J)</th>
+              <th scope="col">Recorded At</th>
+            </tr>
+          </thead>
+          <tbody id="experiments-table-body">
+            <tr>
+              <td colspan="9" class="table-loading-cell">Loading experiments from server...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Server Generated Information & Diagnostics -->
+    <section class="section-card" aria-labelledby="server-info-heading">
+      <h2 id="server-info-heading" class="section-title">Server Telemetry &amp; System Metadata</h2>
+      <p class="section-subtitle">Real-time server-generated diagnostics from the active Node.js instance:</p>
+
+      <div class="telemetry-info-grid">
+        <div class="info-item">
+          <span class="info-label">Application Status</span>
+          <span id="info-status" class="info-value text-accent">Healthy (200 OK)</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Node.js Runtime</span>
+          <span id="info-node" class="info-value">Loading...</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Server Uptime</span>
+          <span id="info-uptime" class="info-value">Loading...</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Environment Mode</span>
+          <span id="info-env" class="info-value text-highlight">Loading...</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Current Server Timestamp (UTC)</span>
+          <span id="info-time" class="info-value">Loading...</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Git Commit Hash</span>
+          <code id="info-commit" class="info-code">Loading...</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- REST API Documentation Panel -->
+    <section class="section-card" aria-labelledby="api-info-heading">
+      <h2 id="api-info-heading" class="section-title">REST API Specifications</h2>
+      <p class="section-subtitle">This application provides automated JSON endpoints for programmatic integration:</p>
+
+      <div class="api-endpoints-grid">
+        <div class="api-card">
+          <div class="api-route-header">
+            <span class="method-tag method-get">GET</span>
+            <code class="endpoint-path">/health</code>
+          </div>
+          <p class="api-description">Health check endpoint for cloud uptime probes and container healthchecks.</p>
+          <pre class="api-sample"><code>{"status":"ok"}</code></pre>
+          <a href="/health" target="_blank" rel="noopener" class="api-link">Test in Browser &rarr;</a>
+        </div>
+
+        <div class="api-card">
+          <div class="api-route-header">
+            <span class="method-tag method-get">GET</span>
+            <code class="endpoint-path">/api/experiments</code>
+          </div>
+          <p class="api-description">Returns all currently logged experiments in server memory as a JSON array.</p>
+          <pre class="api-sample"><code>[{"id":1,"name":"Apollo Lunar Sample","mass":15,"height":1.5,"planet":"Moon","gravity":1.62,"weight":24.3,"potentialEnergy":36.45}]</code></pre>
+          <a href="/api/experiments" target="_blank" rel="noopener" class="api-link">Test in Browser &rarr;</a>
+        </div>
+
+        <div class="api-card">
+          <div class="api-route-header">
+            <span class="method-tag method-post">POST</span>
+            <code class="endpoint-path">/api/experiments</code>
+          </div>
+          <p class="api-description">Validates and saves a new gravity simulation experiment. Returns HTTP 201 or 400.</p>
+          <pre class="api-sample"><code>Payload: {"name":"Curiosity","mass":899,"height":2.0,"planet":"Mars"}</code></pre>
+          <span class="api-subtag">Content-Type: application/json</span>
+        </div>
+
+        <div class="api-card">
+          <div class="api-route-header">
+            <span class="method-tag method-get">GET</span>
+            <code class="endpoint-path">/api/server-info</code>
+          </div>
+          <p class="api-description">Exposes application metadata, runtime details, uptime, and Render Git commit ID.</p>
+          <pre class="api-sample"><code>{"appName":"ANTI-GRAVITY","gitCommit":"<commit-id>","uptimeSeconds":120}</code></pre>
+          <a href="/api/server-info" target="_blank" rel="noopener" class="api-link">Test in Browser &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-meta">
+        <p class="footer-title">ANTI-GRAVITY &mdash; Gravity Simulation &amp; Experiment Portal</p>
+        <p class="footer-subtext">Cloud Computing &amp; DevOps (CCA 2) Project &bull; Built with Node.js, Express, Docker &amp; GitHub Actions</p>
+      </div>
+      <div class="footer-git">
+        <span class="git-label">Deployment Git Commit:</span>
+        <code id="footer-git-commit" class="git-badge" title="RENDER_GIT_COMMIT environment variable">Fetching...</code>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
